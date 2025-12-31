@@ -29,12 +29,12 @@ app.all("/health", async (_req, res) => {
       date: date
     });
   } catch (error) {
-    console.log("Error in connecting to server", error);
+    logger.error({msg: "Error in connecting to server", error});
   }
 });
 
 app.use("/api/v1", routes);
 
 app.listen(PORT, () => {
-  console.log(`Server running on ${PORT}`);
+  logger.info({msg: `Server running on ${PORT}`});
 });
