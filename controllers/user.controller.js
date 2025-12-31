@@ -1,3 +1,4 @@
+const logger = require("../logger/config.logger");
 const userService = require("../services/user.service");
 const { errorResponse } = require("../utils/errorHandler.utils");
 const { successResponse } = require("../utils/successHandler.utils");

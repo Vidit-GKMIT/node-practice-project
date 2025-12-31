@@ -23,7 +23,9 @@
     "joi": "^18.0.2",
     "pg": "^8.16.3",
     "redis": "^5.10.0",
-    "sequelize": "^6.37.7"
+    "sequelize": "^6.37.7",
+    "uuid": "^13.0.0",
+    "winston": "^3.19.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

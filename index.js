@@ -3,11 +3,15 @@ const { sequelize } = require("./models");
 require("dotenv").config();
 const client = require("./config/redis"); // redis client
 const routes = require("./routes/index.route");
+const logger = require('./logger/config.logger')
+const {v4: uuidv4} = require('uuid')
+const {generateLogId} = require('./middleware/logger.middleware')
 
 const app = express();
 const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
+app.use(generateLogId);
 
 app.all("/health", async (_req, res) => {
   try {
@@ -15,6 +19,8 @@ app.all("/health", async (_req, res) => {
     const currentTime = results[0][0].current_time; // [[{current_time}],....]
     const ping = await client.ping();
     const date = new Date();
+    const id = uuidv4();
+    logger.info({msg: "Server running successfully...!!", id});
 
     res.send({
       message: "Server running successfully...!!",
